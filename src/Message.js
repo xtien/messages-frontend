@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import axios from "axios";
-import {Link, Redirect} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 import './css/bootstrap.css'
 import EditMessageForm from './EditMessageForm'
 
@@ -16,6 +16,8 @@ class Message extends Component {
             message: {},
             header: '',
             text: '',
+            dateFrom: '',
+            dateUntil: '',
             status: 0,
             redirect: false
         }
@@ -24,13 +26,12 @@ class Message extends Component {
         this.delete = this.delete.bind(this);
 
         let postData = {
-            id: props.match.params.number
+            id: props.match.params.id
         };
 
         let axiosConfig = {
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
             }
         };
 
@@ -45,10 +46,11 @@ class Message extends Component {
                     id: response.data.message.id,
                     status: response.data.message.status,
                     header: response.data.message.header,
-                    text: response.data.message.text
+                    text: response.data.message.text,
+                    dateFrom: response.data.message.dateFrom,
+                    dateUntil: response.data.message.dateUntil
                 })
             )
-
     }
 
     edit(event) {
@@ -107,6 +109,14 @@ class Message extends Component {
                                 <td>{this.state.header}</td>
                             </tr>
                             <tr>
+                                <td>Date From</td>
+                                <td>{this.state.dateFrom}</td>
+                            </tr>
+                            <tr>
+                                <td>Date Until</td>
+                                <td>{this.state.dateUntil}</td>
+                            </tr>
+                            <tr>
                                 <td>Tekst</td>
                                 <td>{this.state.text}</td>
                             </tr>
@@ -114,11 +124,14 @@ class Message extends Component {
                 </div>
                 <div>
                     {this.state.showEdit ?
-                        <EditMessageForm messageId={this.state.id}
-                                         text={this.state.text}
-                                         header={this.state.header}
-                                         status={this.state.status}
-                                         id={this.state.id}/> : null}
+                        <EditMessageForm
+                            action='update'
+                            text={this.state.text}
+                            header={this.state.header}
+                            dateUntil={this.state.dateUntil}
+                            header={this.state.header}
+                            status={this.state.status}
+                            id={this.state.id}/> : null}
                 </div>
                 <div>
                     {this.state.showEdit ?

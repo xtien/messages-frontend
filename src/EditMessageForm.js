@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import {Redirect} from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 class EditMessageForm extends React.Component {
 
@@ -12,12 +14,17 @@ class EditMessageForm extends React.Component {
             header: this.props.header,
             status: this.props.status,
             text: this.props.text,
+            dateFrom: (this.props.dateFrom != null ? this.props.dateFrom : new Date()),
+            dateUntil: (this.props.dateUntil != null ? this.props.dateUntil : new Date()),
             resultCode: 0,
-            redirect: false
+            redirect: false,
+            action: this.props.action
         };
 
         this.handleHeaderChange = this.handleHeaderChange.bind(this);
         this.handleTextChange = this.handleTextChange.bind(this);
+        this.handleDateFromChange = this.handleDateFromChange.bind(this);
+        this.handleDateUntilChange = this.handleDateUntilChange.bind(this);
         this.handleStatusChange = this.handleStatusChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -28,6 +35,14 @@ class EditMessageForm extends React.Component {
 
     handleTextChange(event) {
         this.setState({text: event.target.value});
+    }
+
+    handleDateFromChange(date) {
+        this.setState({dateFrom: date});
+    }
+
+    handleDateUntilChange(date) {
+        this.setState({dateUntil: date});
     }
 
     handleStatusChange(event) {
@@ -42,18 +57,19 @@ class EditMessageForm extends React.Component {
                 id: this.state.id,
                 status: this.state.status,
                 header: this.state.header,
-                text: this.state.text
+                text: this.state.text,
+                dateFrom: this.state.dateFrom,
+                dateUntil: this.state.dateUntil
             }
         };
 
         let axiosConfig = {
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
             }
         };
 
-        axios.post('http://pengo.christine.nl:8080/updateMessage/',
+        axios.post('http://pengo.christine.nl:8080/' + this.state.action + 'Message/',
             postData,
             axiosConfig
         )
@@ -71,7 +87,7 @@ class EditMessageForm extends React.Component {
 
         if (this.state.redirect) {
             this.state.redirect = false;
-            const linkTo = '/getMessages' ;
+            const linkTo = '/getMessages';
             return <Redirect push to={linkTo}/>;
         }
 
@@ -81,7 +97,7 @@ class EditMessageForm extends React.Component {
                     <table>
                         <tr>
                             <td>Status</td>
-                            <td><input type="text" value={this.state.status}
+                            <td><input type="text" className='textinput' value={this.state.status}
                                        onChange={this.handleStatusChange}/>
                             </td>
                         </tr>
@@ -91,12 +107,27 @@ class EditMessageForm extends React.Component {
                                        onChange={this.handleHeaderChange}/></td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td><textarea value={this.state.text} onChange={this.handleTextChange}/></td>
+                            <td>Text</td>
+                            <td><textarea value={this.state.text} className='textarea'
+                                          onChange={this.handleTextChange}/></td>
+                        </tr>
+                        <tr>
+                            <td>Date from</td>
+                            <td><DatePicker className='dateinput'
+                                            selected={this.state.dateFrom}
+                                            onChange={this.handleDateFromChange}
+                            /></td>
+                        </tr>
+                        <tr>
+                            <td>Date until</td>
+                            <td><DatePicker className='dateinput'
+                                            selected={this.state.dateUntil}
+                                            onChange={this.handleDateUntilChange}
+                            /></td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td><input type="submit" value="Submit"/></td>
+                            <td><input type="submit" className='submitbutton' value="Submit"/></td>
                         </tr>
                     </table>
                 </label>

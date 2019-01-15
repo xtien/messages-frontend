@@ -10,7 +10,7 @@ class Messages extends Component {
 
         this.state = {
             resultCode: -1,
-            data: ['a', 'b'],
+            data: [],
             messages: [{}]
         }
 
@@ -21,7 +21,6 @@ class Messages extends Component {
         let axiosConfig = {
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
             }
         };
 
@@ -60,6 +59,22 @@ class Messages extends Component {
                 Header: '',
                 accessor: 'header',
                 className: 'text-left'
+            }, {
+                Header: 'date from',
+                width: 180,
+                id: 'dateFrom',
+                accessor: data => {
+                    let date = data.dateFrom;
+                    return (date != null ? date.toString() : '');
+                },
+            }, {
+                Header: 'date until',
+                width: 180,
+                id: 'dateUntil',
+                accessor: data => {
+                    let date = data.dateUntil;
+                    return (date != null ? date.toString() : '');
+                },
             }]
 
         return (
