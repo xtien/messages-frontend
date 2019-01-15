@@ -69,7 +69,7 @@ class EditMessageForm extends React.Component {
             }
         };
 
-        axios.post('http://pengo.christine.nl:8080/' + this.state.action + 'Message/',
+        axios.post(window.url + '/' + this.state.action + 'Message/',
             postData,
             axiosConfig
         )
@@ -87,7 +87,7 @@ class EditMessageForm extends React.Component {
 
         if (this.state.redirect) {
             this.state.redirect = false;
-            const linkTo = '/getMessages';
+            let linkTo = '/getMessages';
             return <Redirect push to={linkTo}/>;
         }
 

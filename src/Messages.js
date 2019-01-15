@@ -21,18 +21,20 @@ class Messages extends Component {
         let axiosConfig = {
             headers: {
                 'Content-Type': 'application/json',
+                'Cache-Control': 'no-cache'
             }
         };
 
-        axios.post('http://pengo.christine.nl:8080/getMessages/',
+        axios.post(window.url + '/getMessages/',
             postData,
             axiosConfig
         )
-            .then(response =>
-                this.setState({
-                    resultCode: response.data.resultCode,
-                    messages: response.data.messages
-                })
+            .then(response => {
+                    this.setState({
+                        resultCode: response.data.resultCode,
+                        messages: response.data.messages
+                    })
+                }
             )
     }
 
@@ -61,6 +63,7 @@ class Messages extends Component {
                 className: 'text-left'
             }, {
                 Header: 'date from',
+                className: 'text-center',
                 width: 180,
                 id: 'dateFrom',
                 accessor: data => {
@@ -69,6 +72,7 @@ class Messages extends Component {
                 },
             }, {
                 Header: 'date until',
+                className: 'text-center',
                 width: 180,
                 id: 'dateUntil',
                 accessor: data => {

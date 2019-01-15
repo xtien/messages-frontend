@@ -20,13 +20,7 @@ class AddMessage extends Component {
 
     render() {
 
-        if (this.state.redirect) {
-            this.state.redirect = false;
-            const linkTo = '/getMessages';
-            return <Redirect push to={linkTo}/>;
-        }
-
-        return (
+         return (
             <div>
                 {
                     <EditMessageForm

@@ -10,6 +10,10 @@ import AddMessage from './AddMessage'
 
 class App extends Component {
 
+    constructor(props) {
+        super(props)
+        window.url = 'http://pengo.christine.nl:8080'
+    }
     render() {
 
         return (

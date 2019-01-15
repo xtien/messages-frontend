@@ -35,7 +35,7 @@ class Message extends Component {
             }
         };
 
-        axios.post('http://pengo.christine.nl:8080/getMessage/',
+        axios.post(window.url + '/getMessage/',
             postData,
             axiosConfig
         )
@@ -76,24 +76,16 @@ class Message extends Component {
             }
         };
 
-        axios.post('http://pengo.christine.nl:8080/deleteMessage/',
+        axios.post(window.url + '/deleteMessage/',
             postData,
             axiosConfig
         )
             .then(response =>
                 this.setState({redirect: true})
             )
-
-
     }
 
     render() {
-
-        if (this.state.redirect) {
-            this.state.redirect = false;
-            const linkTo = '/getMessages';
-            return <Redirect push to={linkTo}/>;
-        }
 
         return (
             <div className='container'>
