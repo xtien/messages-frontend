@@ -12,6 +12,7 @@ class App extends Component {
 
     constructor(props) {
         super(props)
+        //window.url = 'https://www.loqli.com/api'
         window.url = 'http://pengo.christine.nl:8080'
     }
     render() {

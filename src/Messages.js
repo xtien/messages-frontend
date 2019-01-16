@@ -6,16 +6,12 @@ import ReactTable from "react-table";
 class Messages extends Component {
 
     constructor() {
-        super()
+        super();
 
         this.state = {
             resultCode: -1,
             data: [],
             messages: [{}]
-        }
-
-        let postData = {
-            requestCode: 0
         };
 
         let axiosConfig = {
@@ -25,8 +21,7 @@ class Messages extends Component {
             }
         };
 
-        axios.post(window.url + '/getMessages/',
-            postData,
+        axios.get(window.url + '/getMessages/',
             axiosConfig
         )
             .then(response => {
@@ -48,7 +43,7 @@ class Messages extends Component {
                 accessor: data => {
                     const nr = data.id;
                     const linkto = '/getMessage/' + nr;
-                    let result = <Link to={linkto}>{nr}</Link>
+                    let result = <Link to={linkto}>{nr}</Link>;
                     return result;
                 },
                 className: 'text-center',

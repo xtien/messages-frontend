@@ -76,11 +76,9 @@ class EditMessageForm extends React.Component {
             .then(response =>
                 this.setState({
                     resultCode: response.data.resultCode,
+                    redirect: true
                 })
             )
-
-        this.setState({redirect: true});
-
     }
 
     render() {
