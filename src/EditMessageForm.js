@@ -91,44 +91,36 @@ class EditMessageForm extends React.Component {
 
         return (
             <form onSubmit={this.handleSubmit}>
-                <label>
-                    <table>
-                        <tr>
-                            <td>Status</td>
-                            <td><input type="text" className='textinput' value={this.state.status}
-                                       onChange={this.handleStatusChange}/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Header</td>
-                            <td><input type="text" className='textinput' value={this.state.header}
-                                       onChange={this.handleHeaderChange}/></td>
-                        </tr>
-                        <tr>
-                            <td>Text</td>
-                            <td><textarea value={this.state.text} className='textarea'
-                                          onChange={this.handleTextChange}/></td>
-                        </tr>
-                        <tr>
-                            <td>Date from</td>
-                            <td><DatePicker className='dateinput'
-                                            selected={this.state.dateFrom}
-                                            onChange={this.handleDateFromChange}
-                            /></td>
-                        </tr>
-                        <tr>
-                            <td>Date until</td>
-                            <td><DatePicker className='dateinput'
-                                            selected={this.state.dateUntil}
-                                            onChange={this.handleDateUntilChange}
-                            /></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td><input type="submit" className='submitbutton' value="Submit"/></td>
-                        </tr>
-                    </table>
-                </label>
+                <div className="form-group">
+                    <label htmlFor="status">Status</label>
+                    <input type="number" className="form-control" id="status"
+                           value={this.state.status}
+                           onChange={this.handleStatusChange}/>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="header">Header</label>
+                    <input type="text" className="form-control" id="header"
+                           onChange={this.handleHeaderChange}/>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="text">Text</label>
+                    <textarea type="text" className="form-control textarea" id="text"
+                           onChange={this.handleTextChange}/>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="dateFrom">Date from</label>
+                    <DatePicker className='dateinput form-control'
+                                selected={this.state.dateFrom}
+                                onChange={this.handleDateFromChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="dateUntil">Date until</label>
+                    <DatePicker className='dateinput form-control'
+                                selected={this.state.dateUntil}
+                                onChange={this.handleDateUntilChange}/>
+                </div>
+                <input type="submit" className="btn btn-outline-success mybutton" value="Submit"/>
 
             </form>
         );

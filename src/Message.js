@@ -91,27 +91,45 @@ class Message extends Component {
             <div className='container'>
                 <div>
                     {this.state.showEdit ? null :
-                        <div className='letter'>
-                            <tr>
-                                <td>Status</td>
-                                <td>{this.state.status}</td>
-                            </tr>
-                            <tr>
-                                <td>Header</td>
-                                <td>{this.state.header}</td>
-                            </tr>
-                            <tr>
-                                <td>Date From</td>
-                                <td>{this.state.dateFrom}</td>
-                            </tr>
-                            <tr>
-                                <td>Date Until</td>
-                                <td>{this.state.dateUntil}</td>
-                            </tr>
-                            <tr>
-                                <td>Tekst</td>
-                                <td>{this.state.text}</td>
-                            </tr>
+                        <div className='letter text-black-50'>
+                            <table>
+                                <tr>
+                                    <td>Status</td>
+                                    <td>{this.state.status}</td>
+                                </tr>
+                                <tr>
+                                    <td>Header</td>
+                                    <td>{this.state.header}</td>
+                                </tr>
+                                <tr>
+                                    <td>Date From</td>
+                                    <td>{this.state.dateFrom}</td>
+                                </tr>
+                                <tr>
+                                    <td>Date Until</td>
+                                    <td>{this.state.dateUntil}</td>
+                                </tr>
+                                <tr>
+                                    <td>Tekst</td>
+                                    <td>{this.state.text}</td>
+                                </tr>
+                            </table>
+                            <div>
+                                {this.state.showEdit ?
+                                    null :
+                                    <div>
+                                        <div>
+                                            <button className="btn btn-outline-success mybutton" onClick={this.edit}
+                                                    value={this.state.id}>
+                                                edit
+                                            </button>
+                                            <button className="btn btn-outline-danger mybutton" onClick={this.delete}
+                                                    value={this.state.id}>
+                                                delete
+                                            </button>
+                                        </div>
+                                    </div>}
+                            </div>
                         </div>}
                 </div>
                 <div>
@@ -124,18 +142,6 @@ class Message extends Component {
                             header={this.state.header}
                             status={this.state.status}
                             id={this.state.id}/> : null}
-                </div>
-                <div>
-                    {this.state.showEdit ?
-                        null :
-                        <div>
-                            <button onClick={this.edit} value={this.state.id}>
-                                edit
-                            </button>
-                            <button onClick={this.delete} value={this.state.id}>
-                                delete
-                            </button>
-                        </div>}
                 </div>
             </div>)
     }

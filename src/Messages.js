@@ -78,10 +78,13 @@ class Messages extends Component {
 
         return (
             <div className='container'>
-                <div className='link'>
-                    <Link to='/addMessage'>Nieuw bericht</Link></div>
+                <ul className="nav">
+                    <div className='nav-item link'>
+                        <Link class="nav-link active" to='/addMessage'>Nieuw bericht</Link></div>
+                </ul>
                 <ReactTable
                     data={this.state.messages}
+                    defaultPageSize={15}
                     columns={columns}
                 />
             </div>

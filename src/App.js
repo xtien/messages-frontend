@@ -12,9 +12,10 @@ class App extends Component {
 
     constructor(props) {
         super(props)
-        //window.url = 'https://www.loqli.com/api'
-        window.url = 'http://pengo.christine.nl:8080'
+        window.url = 'https://www.loqli.com/api'
+        //window.url = 'http://pengo.christine.nl:8080'
     }
+
     render() {
 
         return (
@@ -24,9 +25,14 @@ class App extends Component {
                     <div className='photo'>
                         <img src="https://www.twitli.com/pics/logo/twitli-icon-black-256.png"/>
                     </div>
-                    <div className='jumbotron'>
-                        <h1>Notifications entry and storage system</h1>
-                        <p><Link className='menu' to='/'>Home</Link> <Link className='menu' to='/getMessages/'>Messages</Link></p>
+                    <div className='jumbotron text-black-50'>
+                        <h1>
+                            <div className='nav justify-content-center'>Notifications entry and storage system</div>
+                        </h1>
+                        <ul className="nav justify-content-center">
+                            <li><Link id='Home' className='nav-link active' to='/'>Home</Link></li>
+                            <li><Link id='Messages' className='nav-link active' to='/getMessages/'>Messages</Link></li>
+                        </ul>
                     </div>
                     <div>
                         <Route exact path="/" component={Landing}/>

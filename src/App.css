@@ -80,10 +80,8 @@ text {
 
 .textarea {
     width: 800px;
-    height: 300px;
-    margin-left: 20px;
+    height: 400px;
     width: 800px;
-    margin-top: 20px;
 }
 
 .textinput {
@@ -99,7 +97,7 @@ text {
 }
 
 .datetext {
-    width:100px;
+    width: 100px;
 }
 
 .submitbutton {
@@ -122,3 +120,14 @@ text {
 .menu {
     margin-right: 20px;
 }
+
+.mybutton {
+    margin-left: 20px;
+    margin-top:20px;
+}
+
+.landing {
+    width: 800px;
+    margin: auto;
+}
+
