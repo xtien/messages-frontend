@@ -100,17 +100,20 @@ class EditMessageForm extends React.Component {
                 <div className="form-group">
                     <label htmlFor="header">Header</label>
                     <input type="text" className="form-control" id="header"
+                           value={this.state.header}
                            onChange={this.handleHeaderChange}/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="text">Text</label>
                     <textarea type="text" className="form-control textarea" id="text"
-                           onChange={this.handleTextChange}/>
+                              value={this.state.text}
+                              onChange={this.handleTextChange}/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="dateFrom">Date from</label>
                     <DatePicker className='dateinput form-control'
                                 selected={this.state.dateFrom}
+                                value={this.state.dateFrom}
                                 onChange={this.handleDateFromChange}
                     />
                 </div>
@@ -118,6 +121,7 @@ class EditMessageForm extends React.Component {
                     <label htmlFor="dateUntil">Date until</label>
                     <DatePicker className='dateinput form-control'
                                 selected={this.state.dateUntil}
+                                value={this.state.dateUntil}
                                 onChange={this.handleDateUntilChange}/>
                 </div>
                 <input type="submit" className="btn btn-outline-success mybutton" value="Submit"/>

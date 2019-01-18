@@ -16,9 +16,9 @@
     "react-table": "^6.8.6"
   },
   "scripts": {
-    "start": "HOST='pengo.christine.nl' react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "HOST='pengo.christine.nl' REACT_APP_URL='http://pengo.christine.nl:8080' react-scripts start",
+    "build": "REACT_APP_URL='https://www.loqli.com/api' react-scripts build",
+    "test": "REACT_APP_URL='http://pengo.christine.nl:8080' react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

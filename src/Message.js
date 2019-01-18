@@ -87,6 +87,12 @@ class Message extends Component {
 
     render() {
 
+        if (this.state.redirect) {
+            this.state.redirect = false;
+            let linkTo = '/getMessages';
+            return <Redirect push to={linkTo}/>;
+        }
+
         return (
             <div className='container'>
                 <div>
