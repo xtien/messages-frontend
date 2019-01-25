@@ -36,6 +36,10 @@ class Landing extends Component {
             github, the source of the back-end is{" "}
             <a href="http://www.github.com/xtien/messages-backend">here</a>
           </p>
+          <p>
+            View messages in Android
+            <a href="https://www.loqli.com/apk/app-release.apk"> app</a>
+          </p>
         </div>
       </div>
     );
